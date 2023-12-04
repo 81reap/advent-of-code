@@ -39,9 +39,13 @@ python3 day01.py  0.02s user 0.01s system 51% cpu 0.067 total
 $ go mod init advant-of-code/day01
 
 $ cd go
-$ time go run .
+$ go run .
+
+$ cd go 
+$ go build -o myapp -ldflags="-s -w" .
+$ time ./myapp
 53855
-go run .  0.12s user 0.20s system 59% cpu 0.534 total
+./myapp  0.01s user 0.00s system 4% cpu 0.285 total
 ```
 
 ### Rust
@@ -49,10 +53,12 @@ go run .  0.12s user 0.20s system 59% cpu 0.534 total
 $ cargo new rust
 
 $ cd rust
-$ time cargo run
-    Finished dev [unoptimized + debuginfo] target(s) in 0.01s
-     Running `target/debug/advant-of-code_day01`
+$ cargo run
+
+$ cd rust
+$ cargo build --release
+$ time target/release/advant-of-code_day01
 53855
-cargo run  0.03s user 0.01s system 30% cpu 0.146 total
+target/release/advant-of-code_day01  0.00s user 0.00s system 1% cpu 0.350 total
 ```
 
