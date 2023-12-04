@@ -25,20 +25,13 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
 Consider your entire calibration document. What is the sum of all of the calibration values?
 
 ## Solution
-The solution here is to 
-1. iterate over each line
-2. regex match all numbers individually in the string
-3. concatenate the first and last match into a double digit number
-4. sum up all of the numbers
-
-note :: Solutions may require changes to variables inside the code for proper functionality
 
 ### Python
 ```bash
 $ cd python
-$ python3 day01.py
-54634
-python3 day01.py  0.02s user 0.02s system 45% cpu 0.080 total
+$ time python3 day01.py
+53855
+python3 day01.py  0.02s user 0.01s system 51% cpu 0.067 total
 ```
 
 ### Go
@@ -46,9 +39,9 @@ python3 day01.py  0.02s user 0.02s system 45% cpu 0.080 total
 $ go mod init advant-of-code/day01
 
 $ cd go
-$ go run .
-54634
-go run .  0.13s user 0.23s system 70% cpu 0.515 total
+$ time go run .
+53855
+go run .  0.12s user 0.20s system 59% cpu 0.534 total
 ```
 
 ### Rust
@@ -56,8 +49,10 @@ go run .  0.13s user 0.23s system 70% cpu 0.515 total
 $ cargo new rust
 
 $ cd rust
-$ cargo run
-54634
-cargo run  0.04s user 0.03s system 28% cpu 0.242 total
+$ time cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.01s
+     Running `target/debug/advant-of-code_day01`
+53855
+cargo run  0.03s user 0.01s system 30% cpu 0.146 total
 ```
 
