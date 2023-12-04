@@ -6,7 +6,7 @@ use regex::Regex;
 fn main() -> Result<(), std::io::Error> {
     let file = File::open("../input.txt")?;
     let reader = BufReader::new(&file);
-    let re = Regex::new(r"one|1|two|2|three|3|four|4|five|5|six|6|seven|7|eight|8|nine|9").unwrap();
+    let re = Regex::new(r"one|two|three|four|five|six|seven|eight|nine|[1-9]").unwrap();
 
     let digits_to_int = HashMap::from([
         ("one", "1"), ("1", "1"),
