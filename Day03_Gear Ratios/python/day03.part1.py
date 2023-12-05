@@ -1,4 +1,3 @@
-import re
 import numpy
 
 file = open('../input.txt')

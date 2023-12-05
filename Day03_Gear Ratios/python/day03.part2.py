@@ -1,6 +1,3 @@
-import re
-import numpy
-
 file = open('../input.txt')
 lines = file.readlines()
 engine_schematic = [list(line.strip()) for line in lines]

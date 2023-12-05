@@ -63,8 +63,8 @@ In this schematic, there are two gears. The first is in the top left; it has par
 $ cd python
 $ time python3 day03.part1.py
 536202
-python3 day03.part1.py  1.16s user 0.20s system 331% cpu 0.408 total
+python3 day03.part1.py  0.96s user 0.08s system 376% cpu 0.275 total
 $ time python3 day03.part2.py
 78272573
-python3 day03.part2.py  1.18s user 0.13s system 371% cpu 0.353 total
+python3 day03.part2.py  0.02s user 0.01s system 54% cpu 0.063 total
 ```
