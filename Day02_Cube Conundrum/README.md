@@ -52,7 +52,9 @@ $ go run .
 $ cd go 
 $ go build -o myapp -ldflags="-s -w" .
 $ time ./myapp
-
+max:  2076
+min:  70950
+./myapp  0.00s user 0.00s system 4% cpu 0.083 total
 ```
 
 
