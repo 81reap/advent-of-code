@@ -62,3 +62,14 @@ $ time target/release/advant-of-code_day01
 target/release/advant-of-code_day01  0.00s user 0.00s system 1% cpu 0.350 total
 ```
 
+### Swift
+```bash
+$ cd swift
+$ chmod +x day01.swift
+$ ./day01.swift
+
+$ swiftc day01.swift -o day01
+$ time ./day01 
+53855
+./day01  0.01s user 0.00s system 7% cpu 0.211 total
+```
