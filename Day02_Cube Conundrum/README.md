@@ -80,6 +80,17 @@ min:  70950
 ./myapp  0.00s user 0.00s system 4% cpu 0.083 total
 ```
 
+### swift
+```bash
+$ cd swift
+$ chmod +x day02.swift
+$ ./day02.swift
 
+$ swiftc day02.swift -o day02
+$ time ./day02
+max:  2076
+min:  70950
+./day02  0.01s user 0.01s system 4% cpu 0.419 total
+```
 
 
