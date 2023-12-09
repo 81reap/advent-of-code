@@ -85,4 +85,7 @@ Using the new joker rule, find the rank of every hand in your set. What are the 
 ```
 $ cd python
 $ time python3 day07.py
+part 1 251806792
+part 2 252113488
+python3 day07.py  0.03s user 0.01s system 48% cpu 0.089 total
 ```
