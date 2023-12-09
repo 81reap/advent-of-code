@@ -68,7 +68,7 @@ Process all of the original and copied scratchcards until no more scratchcards a
 
 ## Solutions
 
-### Python
+### python
 ```bash
 $ cd python
 $ time python3 day04.py
@@ -76,3 +76,17 @@ Part 1 26218
 Part 2 9997537
 python3 day04.py  1.19s user 0.14s system 318% cpu 0.416 total
 ```
+
+### swift
+```bash
+$ cd swift
+$ chmod +x day04.swift
+$ ./day04.swift
+
+$ swiftc day04.swift -o day04
+$ time ./day04
+part 1:  26218
+part 2:  9997537
+./day04  0.02s user 0.01s system 5% cpu 0.541 total
+```
+
