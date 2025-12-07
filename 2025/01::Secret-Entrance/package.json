@@ -4,10 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run index.ts",
-    "prepare": "effect-language-service patch"
+    "dev": "bun run src/index.ts",
+    "test": "bun test",
+    "lint": "bunx biome check --write"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.8",
     "@effect/language-service": "^0.60.0",
     "@types/bun": "latest"
   },
@@ -15,6 +17,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@effect/platform-bun": "^0.86.0",
     "effect": "^3.19.9"
   }
 }

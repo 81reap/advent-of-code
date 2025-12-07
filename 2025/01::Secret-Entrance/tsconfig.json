@@ -8,7 +8,7 @@
     // Environment setup & latest features
     "lib": ["ESNext"],
     "target": "ESNext",
-    "module": "nodenext",
+    "module": "preserve",
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
@@ -37,6 +37,10 @@
     "sourceMap": true,
     "skipLibCheck": true,
 
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+    },
     "plugins": [
       {
         "name": "@effect/language-service"
