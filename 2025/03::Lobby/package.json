@@ -4,7 +4,7 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun run src/index.ts",
+		"dev": "bun run src/index.ts; bun run src/indexV2.ts",
 		"test": "bun test",
 		"lint": "bunx @biomejs/biome check --write"
 	},
