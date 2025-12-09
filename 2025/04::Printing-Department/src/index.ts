@@ -20,8 +20,15 @@ const program = () =>
 			),
 		);
 
-		const accessibleRolls = diagramManager.getAccessiblePaper(diagram);
-		yield* Console.info(`The password is ${accessibleRolls}`);
+		const [numAccessibleRolls, _intermediateDiagram] =
+			diagramManager.getAccessiblePaper(diagram);
+		yield* Console.info(
+			`[Part 01] ${numAccessibleRolls} paper rolls are accessible`,
+		);
+
+		const [totalPapersRemoved, _finalDiagram] =
+			diagramManager.removeAllPapers(diagram);
+		yield* Console.info(`[Part 02] ${totalPapersRemoved} paper rolls removed`);
 	});
 
 BunRuntime.runMain(

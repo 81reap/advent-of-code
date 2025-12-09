@@ -38,11 +38,187 @@ describe("AccessiblePaperFinder should pass README example", () => {
 			}).pipe(Effect.provide(DiagramManager.layer)),
 		));
 
-	test("getAccessiblePaper", () =>
+	test("getAccessiblePaper removes 13 rolls", () =>
 		Effect.runPromise(
 			Effect.gen(function* () {
 				const diagramManager = yield* DiagramManager;
-				expect(diagramManager.getAccessiblePaper(EX_PARSED_DIAGRAM)).toBe(13);
+				expect(diagramManager.getAccessiblePaper(EX_PARSED_DIAGRAM)).toEqual([
+					13,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+						[0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+						[1, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+						[1, 0, 1, 1, 1, 1, 0, 0, 1, 0],
+						[0, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+						[0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+						[0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
+			}).pipe(Effect.provide(DiagramManager.layer)),
+		));
+
+	test("getAccessiblePaper removes 12 rolls", () =>
+		Effect.runPromise(
+			Effect.gen(function* () {
+				const diagramManager = yield* DiagramManager;
+				expect(
+					diagramManager.getAccessiblePaper([
+						[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+						[0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+						[1, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+						[1, 0, 1, 1, 1, 1, 0, 0, 1, 0],
+						[0, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+						[0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+						[0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					]),
+				).toEqual([
+					12,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 1, 1, 0, 0, 0, 0, 0, 1, 0],
+						[0, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 1, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 1],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
+			}).pipe(Effect.provide(DiagramManager.layer)),
+		));
+
+	test("getAccessiblePaper removes 7 rolls", () =>
+		Effect.runPromise(
+			Effect.gen(function* () {
+				const diagramManager = yield* DiagramManager;
+				expect(
+					diagramManager.getAccessiblePaper([
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 1, 1, 0, 0, 0, 0, 0, 1, 0],
+						[0, 1, 1, 1, 1, 0, 0, 0, 1, 1],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 1, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 1],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 0, 1, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					]),
+				).toEqual([
+					7,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+						[0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
+			}).pipe(Effect.provide(DiagramManager.layer)),
+		));
+
+	test("getAccessiblePaper removes 5 rolls", () =>
+		Effect.runPromise(
+			Effect.gen(function* () {
+				const diagramManager = yield* DiagramManager;
+				expect(
+					diagramManager.getAccessiblePaper([
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+						[0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 1, 1, 1, 0, 1, 1, 1, 1],
+						[0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					]),
+				).toEqual([
+					5,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
+			}).pipe(Effect.provide(DiagramManager.layer)),
+		));
+
+	test("getAccessiblePaper removes 2 rolls", () =>
+		Effect.runPromise(
+			Effect.gen(function* () {
+				const diagramManager = yield* DiagramManager;
+				expect(
+					diagramManager.getAccessiblePaper([
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					]),
+				).toEqual([
+					2,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+						[0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
+			}).pipe(Effect.provide(DiagramManager.layer)),
+		));
+
+	test("removeAllPapers", () =>
+		Effect.runPromise(
+			Effect.gen(function* () {
+				const diagramManager = yield* DiagramManager;
+				expect(diagramManager.removeAllPapers(EX_PARSED_DIAGRAM)).toEqual([
+					43,
+					[
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						[0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 1, 0, 1, 0, 1, 1, 0],
+						[0, 0, 0, 1, 1, 0, 1, 1, 1, 0],
+						[0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+						[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					],
+				]);
 			}).pipe(Effect.provide(DiagramManager.layer)),
 		));
 });
