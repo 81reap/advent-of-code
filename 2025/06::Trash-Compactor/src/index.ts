@@ -13,9 +13,12 @@ const program = () =>
 		const parsedInput = yield* inputParser.parse(raw);
 
 		const columnCalculator = yield* ColumnCalculator;
-		const grandTotal = yield* columnCalculator.calculate(parsedInput);
 
+		const grandTotal = yield* columnCalculator.calculate(parsedInput);
 		yield* Console.log(`[Part 1] Grand total ${grandTotal}`);
+
+		const fixedGrandTotal = yield* columnCalculator.calculateV2(parsedInput);
+		yield* Console.log(`[Part 2] Grand total ${fixedGrandTotal}`);
 	});
 
 BunRuntime.runMain(

@@ -7,13 +7,26 @@ class ParseError extends Data.TaggedError("ParseError")<{
 
 const parse = (raw: string) =>
 	Effect.try({
-		try: () =>
-			raw.split("\n").map((line) =>
-				line
-					.trim()
-					.split(/\s+/)
-					.map((item) => (Number(item) ? Number(item) : String(item))),
-			),
+		try: () => {
+			const lines = raw.split("\n");
+
+			const cuts: number[] = [];
+			lines[lines.length - 1]!.split("").forEach((char, i) => {
+				if (char === "+" || char === "*") {
+					cuts.push(i);
+				}
+			}, []);
+
+			const parsed: string[][] = Array.from({ length: lines.length }, () => []);
+			cuts.map((cut, i) => {
+				lines.forEach((line, lineIndex) =>
+					cuts[i + 1]
+						? parsed[lineIndex]?.push(line.slice(cut, cuts[i + 1]! - 1))
+            : parsed[lineIndex]?.push(line.slice(cut)),
+				);
+			});
+			return parsed;
+		},
 		catch: (e) =>
 			new ParseError({
 				error: e,

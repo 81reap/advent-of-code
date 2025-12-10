@@ -1,23 +1,23 @@
 import { describe, expect, test } from "bun:test";
-import { Effect } from "effect";
+import { Effect, pipe } from "effect";
 import { InputParser } from "@/InputParser";
-
-export const EX_INPUT = `123 328  51 64
-  45 64  387 23
-    6 98  215 314
-  *   +   *   +  `;
+import { TestConstants } from "./TestConstants";
 
 describe("InputParser", () => {
 	test("parse", () =>
-		Effect.runPromise(
+		pipe(
 			Effect.gen(function* () {
+				const testConstants = yield* TestConstants;
 				const inputParser = yield* InputParser;
-				expect(yield* inputParser.parse(EX_INPUT)).toEqual([
-					[123, 328, 51, 64],
-					[45, 64, 387, 23],
-					[6, 98, 215, 314],
-					["*", "+", "*", "+"],
+				expect(yield* inputParser.parse(testConstants.SampleInput)).toEqual([
+					["123", "328", " 51", "64 "],
+					[" 45", "64 ", "387", "23 "],
+					["  6", "98 ", "215", "314"],
+					["*  ", "+  ", "*  ", "+  "],
 				]);
-			}).pipe(Effect.provide(InputParser.layer)),
+			}),
+			Effect.provide(TestConstants.layer),
+			Effect.provide(InputParser.layer),
+			Effect.runPromise,
 		));
 });
