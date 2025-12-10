@@ -1,0 +1,23 @@
+{
+	"name": "07::laboratories",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run src/index.ts",
+		"test": "bun test",
+		"lint": "bunx @biomejs/biome check --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.8",
+		"@effect/language-service": "^0.60.0",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@effect/platform-bun": "^0.86.0",
+		"effect": "^3.19.11"
+	}
+}
