@@ -14,10 +14,10 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@effect/platform-bun": "^0.86.0",
-    "effect": "^3.19.9"
+    "effect": "^3.19.10"
   }
 }

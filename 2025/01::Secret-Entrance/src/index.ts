@@ -21,12 +21,11 @@ const readFileByLines = (
 const program = () => Effect.gen(function* () {
   const steps = yield* readFileByLines("input.txt")
   const dail = new DialCounter(50, 100);
-  var zeros = 0;
-  for (const [op, number] of steps) {
-    zeros = 'L' === op ? 
-      zeros + dail.decrement(number) : 
-      zeros + dail.increment(number);
-  }
+  const zeros = steps.reduce((countZeros, [op, number]) => {
+    return 'L' === op ? 
+      countZeros + dail.decrement(number) :
+      countZeros + dail.increment(number)
+  }, 0)
   yield* Console.info(`The password is ${zeros}`);
 })
 
