@@ -9,9 +9,9 @@ describe("InputParser", () => {
 			Effect.gen(function* () {
 				const testConstants = yield* TestConstants;
 				const inputParser = yield* InputParser;
-				expect(
-					yield* yield* inputParser.parse(testConstants.SampleInput),
-				).toEqual(yield* testConstants.ParsedSampleInput);
+				expect(yield* inputParser.parse(testConstants.SampleInput)).toEqual(
+					yield* testConstants.ParsedSampleInput,
+				);
 			}),
 			Effect.provide(TestConstants.layer),
 			Effect.provide(InputParser.layer),

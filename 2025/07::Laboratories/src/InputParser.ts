@@ -8,7 +8,7 @@ export const InputSchema = Schema.Array(
 
 const parse = (raw: string) =>
 	Effect.gen(function* () {
-		return Schema.decodeUnknown(InputSchema)(
+		return yield* Schema.decodeUnknown(InputSchema)(
 			raw.split("\n").map((line) => line.split("")),
 		);
 	});

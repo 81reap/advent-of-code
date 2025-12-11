@@ -10,12 +10,15 @@ const program = () =>
 		const raw = yield* fs.readFileString("src/input.txt", "utf8");
 
 		const inputParser = yield* InputParser;
-		const parsedInput = yield* yield* inputParser.parse(raw);
+		const parsedInput = yield* inputParser.parse(raw);
 
 		const tachyonCalculator = yield* TachyonCalculator;
 
 		yield* Console.log(
 			`[Part 1] Beam split ${yield* tachyonCalculator.maxBeamSplit(parsedInput)} times`,
+		);
+		yield* Console.log(
+			`[Part 2] Beam split ${tachyonCalculator.maxBeamSplitV2(parsedInput)} times`,
 		);
 	});
 
