@@ -54,6 +54,33 @@ const largestCircuit = (
 		.reduce((agg, treeHeight) => agg * treeHeight, 1);
 };
 
+const largestCircuitV2 = (junctionBoxes: typeof InputSchema.Type) => {
+	const distances = topKShortestDistances(junctionBoxes, Infinity);
+
+	var ans: number;
+	Graph.undirected<typeof Point.Type, number>((mutable) => {
+		junctionBoxes.forEach((point) => void Graph.addNode(mutable, point));
+		for (const edge of distances) {
+			const [from, to] = Graph.findNodes(
+				mutable,
+				(node) => node === edge.from || node === edge.to,
+			);
+			Graph.addEdge(mutable, from!, to!, edge.distance);
+
+			const tallestTree = Graph.connectedComponents(mutable)
+				.map((tree) => tree.length)
+				.sort((a, b) => a - b)
+				.pop();
+
+			if (tallestTree === junctionBoxes.length) {
+				ans = edge.from[0] * edge.to[0];
+				break;
+			}
+		}
+	});
+	return ans!;
+};
+
 export class CircuitCalculator extends Effect.Service<CircuitCalculator>()(
 	"CircuitCalculator",
 	{
@@ -61,6 +88,7 @@ export class CircuitCalculator extends Effect.Service<CircuitCalculator>()(
 			distance,
 			topKShortestDistances,
 			largestCircuit,
+			largestCircuitV2,
 		}),
 	},
 ) {}

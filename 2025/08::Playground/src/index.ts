@@ -15,7 +15,10 @@ const program = () =>
 
 		const circuitCalculator = yield* CircuitCalculator;
 		yield* Console.log(
-			`[Part 1] Beam split ${circuitCalculator.largestCircuit(parsedInput, 1000)} times`,
+			`[Part 1] Largest circut ${circuitCalculator.largestCircuit(parsedInput, 1000)}`,
+		);
+		yield* Console.log(
+			`[Part 1] x1*x2 for last 2 boxes ${circuitCalculator.largestCircuitV2(parsedInput)}`,
 		);
 	});
 

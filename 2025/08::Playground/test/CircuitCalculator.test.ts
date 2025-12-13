@@ -4,6 +4,23 @@ import { CircuitCalculator } from "@/CircuitCalculator";
 import { TestConstants } from "./TestConstants";
 
 describe("CircuitCalculator", () => {
+	describe("largestCircuitV2()", () => {
+		test("README Example", () =>
+			pipe(
+				Effect.gen(function* () {
+					const circuitCalculator = yield* CircuitCalculator;
+					expect(
+						circuitCalculator.largestCircuitV2(
+							yield* TestConstants.ParsedSampleInput,
+						),
+					).toBe(25272);
+				}),
+				Effect.provide(CircuitCalculator.Default),
+				Effect.provide(TestConstants.Default),
+				Effect.runPromise,
+			));
+	});
+
 	describe("largestCircuit()", () => {
 		test("README Example", () =>
 			pipe(
